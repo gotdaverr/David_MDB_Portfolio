@@ -14,7 +14,10 @@ class SFSCollectionVC: UIViewController {
         layout.minimumLineSpacing = 30
         layout.minimumInteritemSpacing = 30
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(SFSCollectionCell.self, forCellWithReuseIdentifier: SFSCollectionCell.reuseIdentifier)
+        collectionView.register(SFSCollectionCell.self, forCellWithReuseIdentifier: SFSCollectionCell.reuseIdentifier) //allows for multiple cell designs --> want to register the SFCollectionCelll --> without register, the UI collection view has no knowledge of the cell we are going to use --> register makes it so that we know what type of cell is in the collection view
+        //reuseIdentifier allows you to reuse cells
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
 
@@ -29,15 +32,16 @@ class SFSCollectionVC: UIViewController {
         
         collectionView.allowsSelection = true
         collectionView.allowsMultipleSelection = false
-        
+        //assigning self to be the data source (line below)
         collectionView.dataSource = self
         collectionView.delegate = self
+        //to implement datasource delegate, use protocall conformance
     }
 }
 
 extension SFSCollectionVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return SymbolProvider.symbols.count
+        return SymbolProvider.symbols.count // number of cells trying to displayin collection view
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,14 +51,14 @@ extension SFSCollectionVC: UICollectionViewDataSource {
         return cell
     }
 }
-
+//need to have the data source for the collection view --this is what this function below is for. protocal performance --> how many cells are there; how many views for each cell 
 extension SFSCollectionVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let symbol = SymbolProvider.symbols[indexPath.item]
+        let symbol = SymbolProvider.symbols[indexPath.item] //item is the index of the flow layout array
         
         return UIContextMenuConfiguration(identifier: indexPath as NSCopying, previewProvider: {
             return SFSPreviewVC(symbol: symbol)
@@ -66,6 +70,8 @@ extension SFSCollectionVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let symbol = SymbolProvider.symbols[indexPath.item]
+        //code below makes it so that runtime for the items that are in the collection is easy to run -->
+        //let cell = collectionView.dequeueConfiguredReusableCell(using: withRes, for: <#T##IndexPath#>, item: <#T##Item?#>)
         print("Selected \(symbol.name)")
     }
 }

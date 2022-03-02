@@ -57,16 +57,18 @@ class StartVC: UIViewController {
         // where you will find all the available APIs.
         
         // MARK: >> Your Code Here <<
-        
+        //button.backgroundColor = .blue
+        button.layer.borderWidth = 0.5
+        button.layer.borderColor = UIColor.blue.cgColor
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white // == UIColor(expected type).white
-        
+        view.backgroundColor = UIColor.white // == UIColor(expected type).white
+    
         // MARK: STEP 2: Subviews and Constraints
         // Action Items:
         // - Read the example on adding subviews and creating constraints
@@ -112,9 +114,13 @@ class StartVC: UIViewController {
         ])
         
         // MARK: >> Your Code Here <<
+        view.addSubview(startButton)
         
         NSLayoutConstraint.activate([
             // MARK: >> Your Code Here <<
+            startButton.topAnchor.constraint(equalTo: welcomeLabel.topAnchor, constant: 100),
+            startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
         ])
         
         

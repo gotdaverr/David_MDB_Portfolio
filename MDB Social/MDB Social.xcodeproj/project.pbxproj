@@ -32,6 +32,8 @@
 		1ADC5882271255DC0067693B /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADC587F271255DC0067693B /* UIViewController+HideKeyboard.swift */; };
 		1AFB4D86271C22FD006621E9 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB4D85271C22FD006621E9 /* FeedVC.swift */; };
 		1AFB4D88271C2327006621E9 /* FeedNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB4D87271C2327006621E9 /* FeedNavigationVC.swift */; };
+		F4B2167F27F41E0E00B19FF3 /* SignUpVC .swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2167E27F41E0E00B19FF3 /* SignUpVC .swift */; };
+		F4B2168127FD4CCB00B19FF3 /* EventCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2168027FD4CCB00B19FF3 /* EventCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		1ADC587F271255DC0067693B /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
 		1AFB4D85271C22FD006621E9 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		1AFB4D87271C2327006621E9 /* FeedNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedNavigationVC.swift; sourceTree = "<group>"; };
+		F4B2167E27F41E0E00B19FF3 /* SignUpVC .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpVC .swift"; sourceTree = "<group>"; };
+		F4B2168027FD4CCB00B19FF3 /* EventCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 				1ADC5874271255460067693B /* HorizontalActionLabel.swift */,
 				1ADC5876271255460067693B /* LoadingButton.swift */,
 				1ADC5875271255460067693B /* SigninVC.swift */,
+				F4B2167E27F41E0E00B19FF3 /* SignUpVC .swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				1AFB4D85271C22FD006621E9 /* FeedVC.swift */,
+				F4B2168027FD4CCB00B19FF3 /* EventCollectionCell.swift */,
 				1AFB4D87271C2327006621E9 /* FeedNavigationVC.swift */,
 			);
 			path = Feed;
@@ -253,6 +259,7 @@
 			files = (
 				1ADC5868271250090067693B /* User.swift in Sources */,
 				1ADC586C271250B50067693B /* AuthManager.swift in Sources */,
+				F4B2168127FD4CCB00B19FF3 /* EventCollectionCell.swift in Sources */,
 				1ADC587A271255460067693B /* LoadingButton.swift in Sources */,
 				1ADC5882271255DC0067693B /* UIViewController+HideKeyboard.swift in Sources */,
 				1ADC5880271255DC0067693B /* UIColor+ColorScheme.swift in Sources */,
@@ -260,6 +267,7 @@
 				1ADC586E271253E90067693B /* DatabaseRequest.swift in Sources */,
 				1ADC5879271255460067693B /* SigninVC.swift in Sources */,
 				1ADC586A271250500067693B /* Event.swift in Sources */,
+				F4B2167F27F41E0E00B19FF3 /* SignUpVC .swift in Sources */,
 				1AFB4D86271C22FD006621E9 /* FeedVC.swift in Sources */,
 				1ADC5846271249AB0067693B /* AppDelegate.swift in Sources */,
 				1ADC5881271255DC0067693B /* UIColor+Hex.swift in Sources */,

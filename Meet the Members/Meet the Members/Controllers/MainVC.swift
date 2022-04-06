@@ -105,7 +105,7 @@ class MainVC: UIViewController {
     
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
+            
         // MARK: STEP 6: Adding Subviews and Constraints
         // Action Items:
         // - Add imageViews and buttons to the root view.
@@ -143,16 +143,16 @@ class MainVC: UIViewController {
         
         NSLayoutConstraint.activate([
             buttons[0].topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 500),
-            buttons[0].leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            buttons[0].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            buttons[0].leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            buttons[0].trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
         ])
         
         view.addSubview(buttons[1])
         
         NSLayoutConstraint.activate([
             buttons[1].topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 550),
-            buttons[1].leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            buttons[1].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            buttons[1].leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            buttons[1].trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
         ])
         
         view.addSubview(buttons[2])
@@ -160,44 +160,44 @@ class MainVC: UIViewController {
         NSLayoutConstraint.activate([
 
             buttons[2].topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 600),
-            buttons[2].leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            buttons[2].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            buttons[2].leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            buttons[2].trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
         ])
         
         view.addSubview(buttons[3])
         NSLayoutConstraint.activate([
         buttons[3].topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 650),
         
-        buttons[3].leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-        buttons[3].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+        buttons[3].leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+        buttons[3].trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
     ])
         
         view.addSubview(statsButton)
         
         NSLayoutConstraint.activate([
-            statsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 200),
-            statsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            statsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            statsButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 200),
+            statsButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            statsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
         ])
         
         view.addSubview(pauseButtons)
         
         NSLayoutConstraint.activate([
-            pauseButtons.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            pauseButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            pauseButtons.topAnchor.constraint(equalTo: view.topAnchor, constant: 700),
+            pauseButtons.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            pauseButtons.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            pauseButtons.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 700),
         ])
         view.addSubview(scoresLabel)
         NSLayoutConstraint.activate([
-            scoresLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            scoresLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            scoresLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            scoresLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            scoresLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            scoresLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
         ])
         view.addSubview(resumeButtons)
         NSLayoutConstraint.activate([
-        resumeButtons.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-        resumeButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-        resumeButtons.topAnchor.constraint(equalTo: view.topAnchor, constant: 700),
+            resumeButtons.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            resumeButtons.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            resumeButtons.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 700),
         ])
         
         pauseButtons.isHidden = false
@@ -359,6 +359,7 @@ class MainVC: UIViewController {
     //var fiveSecPassed = false
     @objc func timerCallback() {
         seconds += 1
+        
         if buttonWasTapped == true {
             //handle case where its been two seconds and need to get next question
             if seconds == 3 {

@@ -25,6 +25,18 @@ class AuthManager {
         case unspecified
     }
     
+    enum SignUpErrors: Error {
+        
+        case invalidEmail
+        case weakPassword
+        case passWordNoMatch
+        case unspecified
+        case emailExists
+        case errorFetchingUserDoc
+        case errorDecodingUserDoc
+    
+    }
+    
     let db = Firestore.firestore()
     
     var currentUser: User?
@@ -68,6 +80,41 @@ class AuthManager {
     
     /* TODO: Firebase sign up handler, add user to firestore */
     
+    
+    func signUp(email: String, password: String, username: String, name: String,
+                completion: ((Result<User, SignUpErrors>)->Void)?) { //
+
+        auth.createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                let nsError = error as NSError
+                let errorCode = FirebaseAuth.AuthErrorCode(rawValue: nsError.code)
+
+                switch errorCode {
+                case .invalidEmail:
+                    completion?(.failure(.invalidEmail))
+                case .weakPassword:
+                    completion?(.failure(.weakPassword))
+                case .emailAlreadyInUse:
+                    completion?(.failure(.emailExists))
+                default:
+                    completion?(.failure(.unspecified))
+
+                }
+                return
+            }
+            
+            self.linkUserSignUp(withuid: authResult!.user.uid, completion: completion)
+            let user: User = User(uid: authResult?.user.uid, username: username, email: email, fullname: name, savedEvents: [])
+            DatabaseRequest.shared.setUser(user, completion: {})
+            
+
+
+        }
+        
+        
+    }
+    
+    
     func isSignedIn() -> Bool {
         return auth.currentUser != nil
     }
@@ -82,7 +129,26 @@ class AuthManager {
     
     private func linkUser(withuid uid: String,
                           completion: ((Result<User, SignInErrors>)->Void)?) {
-        
+        //attach listener --> listener is triggered
+        userListener = db.collection("users").document(uid).addSnapshotListener { [weak self] docSnapshot, error in
+            guard let document = docSnapshot else {
+                completion?(.failure(.errorFetchingUserDoc))
+                return
+            }
+            guard let user = try? document.data(as: User.self) else {
+                completion?(.failure(.errorDecodingUserDoc))
+                return
+            }
+            
+            self?.currentUser = user
+            completion?(.success(user))
+        }
+    }
+    
+    //created new link user function to account for SignUp Error enum i created
+    private func linkUserSignUp(withuid uid: String, 
+                          completion: ((Result<User, SignUpErrors>)->Void)?) {
+        //attach listener --> listener is triggered
         userListener = db.collection("users").document(uid).addSnapshotListener { [weak self] docSnapshot, error in
             guard let document = docSnapshot else {
                 completion?(.failure(.errorFetchingUserDoc))

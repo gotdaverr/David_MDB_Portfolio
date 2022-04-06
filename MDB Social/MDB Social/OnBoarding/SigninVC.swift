@@ -135,6 +135,8 @@ class SigninVC: UIViewController {
         ])
         
         signUpActionLabel.addTarget(self, action: #selector(didTapSignUp(_:)), for: .touchUpInside)
+
+
     }
 
     @objc private func didTapSignIn(_ sender: UIButton) {
@@ -155,7 +157,7 @@ class SigninVC: UIViewController {
             defer {
                 self.signinButton.hideLoading()
             }
-            
+
             switch result {
             case .success:
                 guard let window = self.view.window else { return }
@@ -181,6 +183,9 @@ class SigninVC: UIViewController {
     }
     
     @objc private func didTapSignUp(_ sender: UIButton) {
+        let vc = SignUpVC()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
         
     }
     

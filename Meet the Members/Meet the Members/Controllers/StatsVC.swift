@@ -84,7 +84,7 @@ class StatsVC: UIViewController {
         view.backgroundColor = .white
         view.addSubview(resultsLabel)
         
-        resultsLabel.text = "Correct: \(correctScore)" + " Incorrect: \(incorrectScore)"
+        resultsLabel.text = "Correct: \(correctScore)" + "                 Incorrect: \(incorrectScore)"
         NSLayoutConstraint.activate([
             resultsLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
             resultsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),

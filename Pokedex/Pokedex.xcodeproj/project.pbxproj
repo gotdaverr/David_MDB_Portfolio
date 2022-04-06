@@ -55,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				1ADFE9F425DF97D6003D8D69 /* Pokedex */,
+				1ADDE9DA25E1BF1400ECA77F /* Controllers */,
 				1ADFE9F325DF97D6003D8D69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +74,6 @@
 				1ADFE9FB25DF97D6003D8D69 /* Main.storyboard */,
 				1ADFEA1725DF9A84003D8D69 /* Support Files */,
 				1ADFEA1625DF9A5A003D8D69 /* Resources */,
-				1ADDE9DA25E1BF1400ECA77F /* Controllers */,
 				1ADFEA0B25DF9888003D8D69 /* Models */,
 			);
 			path = Pokedex;

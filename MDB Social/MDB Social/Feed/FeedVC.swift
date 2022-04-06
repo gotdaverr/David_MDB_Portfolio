@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SwiftUI
 
 class FeedVC: UIViewController {
     
+    var events: [Event] = []
     private let signOutButton: UIButton = {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         btn.backgroundColor = .primary
@@ -21,11 +23,25 @@ class FeedVC: UIViewController {
         return btn
     }()
     
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 30
+        layout.minimumInteritemSpacing = 30
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        //collectionView.register(SFSCollectionCell.self, forCellWithReuseIdentifier: SFSCollectionCell.reuseIdentifier) //allows for multiple cell designs --> want to register the SFCollectionCelll --> without register, the UI collection view has no knowledge of the cell we are going to use --> register makes it so that we know what type of cell is in the collection view
+        //reuseIdentifier allows you to reuse cells
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
     override func viewDidLoad() {
         view.addSubview(signOutButton)
+        events = DatabaseRequest.shared.eventGet(vc: self)
+//        signOutButton.center = view.center
+//        signOutButton.addTarget(self, action: #selector(didTapSignOut(_:)), for: .touchUpInside)
         
-        signOutButton.center = view.center
-        signOutButton.addTarget(self, action: #selector(didTapSignOut(_:)), for: .touchUpInside)
+        
     }
     
     @objc func didTapSignOut(_ sender: UIButton) {
@@ -41,3 +57,28 @@ class FeedVC: UIViewController {
         }
     }
 }
+
+    
+    
+
+extension FeedVC: UICollectionViewDataSource  {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return events.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let event = events[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EventCollectionCell.reuseIdentifier, for: indexPath) as! EventCollectionCell
+        return cell
+        
+    }
+    
+
+    
+}
+
+extension FeedVC: UICollectionViewDelegateFlowLayout {
+    
+
+}
+
